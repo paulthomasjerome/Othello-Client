@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Square from './Square';
 
 const boardState =
   [
@@ -25,7 +26,12 @@ const Board = () => {
       {
       boardState.map(
         (row, rowIndex) => row.map(
-          (column, columnIndex) => (<h1 style={{ color: 'black'}}>fuck</h1>),
+          (column, columnIndex) => (<Square
+            key={`${columnIndex}-${rowIndex}-${row[columnIndex]}`}
+            discColor={row[columnIndex]}
+            rowIndex={rowIndex}
+            columnIndex={columnIndex}
+            />),
         ),
       )
     }
@@ -34,12 +40,3 @@ const Board = () => {
 }
 
 export default Board;
-
-{/* <Square
-makeMoveCallback={makeMoveCallback}
-// eslint-disable-next-line react/no-array-index-key
-key={`${columnIndex}-${rowIndex}-${row[columnIndex]}`}
-discColor={row[columnIndex]}
-rowIndex={rowIndex}
-columnIndex={columnIndex}
-/> */}
